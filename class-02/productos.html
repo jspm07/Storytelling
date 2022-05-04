@@ -103,8 +103,9 @@
               </p>
             </figure>  
            
+
             <figure class="highcharts-figure">
-              <div id="pruebahighcharts"></div>
+              <div id="burbujasytiempo"></div>
               <p class="highcharts-description">
                   A basic column chart compares rainfall values between four cities.
                   Tokyo has the overall highest amount of rainfall, followed by New York.
@@ -217,93 +218,6 @@
   });
   </script>
 
-  <script>
-    Highcharts.chart('maximosyminimos', {
-      chart: {
-          type: 'columnrange',
-          inverted: true,
-          min: -100
-      },
-
-      accessibility: {
-          description: ''
-      },
-
-      title: {
-          text: 'Pagos máximos y minimos por producto vendido'
-      },
-
-      subtitle: {
-          text: ''
-      },
-
-      xAxis: {
-          categories: [
-          'Alianza - Blanquiazul',
-          'Alianza Lima - Azul',
-          'Alianza Lima - Blanca',
-          'Bear',
-          'Black',
-          'Blue',
-          'Camo',
-          'Condor',
-          'Escudo',
-          'Forest',
-          'LightBlue',
-          'Pack 1',
-          'Pack 2',
-          'Pack 3',
-          'Tie Dye',
-        ]
-      },
-
-      yAxis: {
-          title: {
-              text: 'Total pagado ( S/. )'
-          }
-      },
-
-      tooltip: {
-          valueSuffix: '°C'
-      },
-
-      plotOptions: {
-          columnrange: {
-              dataLabels: {
-                  enabled: true,
-                  format: 'S/. {y}'
-              }
-          }
-      },
-
-      legend: {
-          enabled: false
-      },
-
-      series: [{
-          name: 'Total pagado',
-          data: [
-          [0,	756.7],
-          [-0.69,	672.5],
-          [-2.69,	672.5],
-          [18.3369,	840],
-          [0,	1420],
-          [0,	1420],
-          [20,	532],
-          [-20,	570],
-          [0,	570],
-          [-5,	640],
-          [-5,	880],
-          [-22.7667,	1229.5],
-          [32.8,	258.2],
-          [48.9,	254.5],
-          [-5,	600]
-        ]
-      }]
-
-      });
-        
-  </script>
 
   <script>
     Highcharts.chart('pruebahighcharts', {
@@ -375,5 +289,218 @@ series: [{
 
   </script>
 
+  <script>
+    Highcharts.chart('burbujasytiempo', {
+      chart: {
+          type: 'bubble',
+          plotBorderWidth: 1,
+          zoomType: 'xy'
+      },
+
+      legend: {
+          enabled: false
+      },
+
+      title: {
+          text: 'Productos'
+      },
+
+      subtitle: {
+          text: ''
+      },
+
+      accessibility: {
+          point: {
+              valueDescriptionFormat: '{index}. {point.name}, Total: S/. {point.x}, Ventas: {point.y}, precio: S/.{point.z}'
+          }
+      },
+
+      xAxis: {
+          gridLineWidth: 1,
+          title: {
+              text: 'Total de soles generados por productp'
+          },
+          labels: {
+              format: 'S/. {value}'
+          },
+          plotLines: [{
+              color: 'black',
+              dashStyle: 'dot',
+              width: 2,
+              value: 65,
+              label: {
+                  rotation: 0,
+                  y: 15,
+                  style: {
+                      fontStyle: 'italic'
+                  },
+                  text: ''
+              },
+              zIndex: 3
+          }]
+      },
+
+      yAxis: {
+          startOnTick: false,
+          endOnTick: false,
+          title: {
+              text: 'Cantidad de ventas'
+          },
+          labels: {
+              format: '{value}'
+          },
+          maxPadding: 0.2,
+          plotLines: [{
+              color: 'black',
+              dashStyle: 'dot',
+              width: 2,
+              value: 50,
+              label: {
+                  align: 'right',
+                  style: {
+                      fontStyle: 'italic'
+                  },
+                  text: 'Safe sugar intake 50g/day',
+                  x: -10
+              },
+              zIndex: 3
+          }],
+          accessibility: {
+              rangeDescription: 'Range: 0 to 160 grams.'
+          }
+      },
+
+      tooltip: {
+          useHTML: true,
+          headerFormat: '<table>',
+          pointFormat: '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
+              '<tr><th>Total ventas:</th><td>S/.{point.x}</td></tr>' +
+              '<tr><th>Cantidad ventas:</th><td>{point.y}</td></tr>' +
+              '<tr><th>Precio producto:</th><td>S/.{point.z}</td></tr>',
+          footerFormat: '</table>',
+          followPointer: true
+      },
+
+      plotOptions: {
+          series: {
+              dataLabels: {
+                  enabled: true,
+                  format: '{point.name}'
+              }
+          }
+      },
+
+      series: [{
+        data: [
+    {
+      "name" : "Alianza - Blanquiazul",
+      "country" : "Alianza - Blanquiazul",
+      "y" : 5572,
+      "x" : 237443.2744,
+      "z" : 37.99890524
+    },
+    {
+      "name" : "Alianza Lima - Azul",
+      "country" : "Alianza Lima - Azul",
+      "y" : 4480,
+      "x" : 178838.8825,
+      "z" : 35.86466518
+    },
+    {
+      "name" : "Alianza Lima - Blanca",
+      "country" : "Alianza Lima - Blanca",
+      "y" : 1701,
+      "x" : 60482.3734,
+      "z" : 33.11499118
+    },
+    {
+      "name" : "Bear",
+      "country" : "Bear",
+      "y" : 568,
+      "x" : 21428.0084,
+      "z" : 38.68838028
+    },
+    {
+      "name" : "Black",
+      "country" : "Black",
+      "y" : 1743,
+      "x" : 80232.8173,
+      "z" : 45.86919105
+    },
+    {
+      "name" : "Blue",
+      "country" : "Blue",
+      "y" : 1228,
+      "x" : 57597.1977,
+      "z" : 48.14739414
+    },
+    {
+      "name" : "Camo",
+      "country" : "Camo",
+      "y" : 121,
+      "x" : 5096.81,
+      "z" : 46.28099174
+    },
+    {
+      "name" : "Condor",
+      "country" : "Condor",
+      "y" : 78,
+      "x" : 3718.0232,
+      "z" : 54.48717949
+    },
+    {
+      "name" : "Escudo",
+      "country" : "Escudo",
+      "y" : 882,
+      "x" : 31587.5235,
+      "z" : 35.28911565
+    },
+    {
+      "name" : "Forest",
+      "country" : "Forest",
+      "y" : 652,
+      "x" : 22332.0251,
+      "z" : 34.24079755
+    },
+    {
+      "name" : "LightBlue",
+      "country" : "LightBlue",
+      "y" : 767,
+      "x" : 30623.4815,
+      "z" : 40.38461538
+    },
+    {
+      "name" : "Pack 1",
+      "country" : "Pack 1",
+      "y" : 3164,
+      "x" : 220949.3393,
+      "z" : 91.94848293
+    },
+    {
+      "name" : "Pack 2",
+      "country" : "Pack 2",
+      "y" : 1221,
+      "x" : 76378.1861,
+      "z" : 83.35380835
+    },
+    {
+      "name" : "Pack 3",
+      "country" : "Pack 3",
+      "y" : 535,
+      "x" : 32113.4571,
+      "z" : 80.3271028
+    },
+    {
+      "name" : "Tie Dye",
+      "country" : "Tie Dye",
+      "y" : 797,
+      "x" : 26862.6496,
+      "z" : 33.09284818
+    }
+  ]
+      }]
+
+      });
+  </script>
   </body>
 </html>

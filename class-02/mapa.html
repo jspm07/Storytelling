@@ -112,7 +112,16 @@
 
     var markers = L.layerGroup();
 
+
+    
     var lima = L.marker([-12.018339935795535, -77.08210032109963]).bindPopup('Lima').addTo(markers);
+    var abancay = L.marker([-13.7322804, -72.8149939]).bindPopup('Abancay').addTo(markers);
+    var arequipa = L.marker([-16.3988667, -71.5369607]).bindPopup('AREQUIPA').addTo(markers);
+    var cajamarca = L.marker([-6.25, -78.833333]).bindPopup('Cajamarca').addTo(markers);
+    var cusco = L.marker([-13.5170887, -71.9785356]).bindPopup('Cusco').addTo(markers);
+
+
+    
 
 
     var mbAttr = '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
@@ -135,7 +144,7 @@
     }
 
     var overlays = {
-      'Cities': cities
+      'Departamentos': markers
     }
 
 
