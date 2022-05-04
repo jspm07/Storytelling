@@ -1,0 +1,197 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Visualización de datos y Storytelling</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <meta name="theme-color" content="#7952b3">
+
+  </head>
+  <body>
+
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Visualización de datos y storytelling</a>
+      <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">
+                  <span data-feather="home"></span>
+                  Datos
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="productos.html">
+                  <span data-feather="file"></span>
+                  Productos
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="mapa.html">
+                  <span data-feather="shopping-cart"></span>
+                  Mapa de ventas
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="users"></span>
+                  Clientes
+                </a>
+              </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Reportes</span>
+              <a class="link-secondary" href="#" aria-label="Add a new report">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Mes actual
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Último trimestre
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">PRODUCTOS</h1>
+          </div>
+          <h5></h5>
+          <div class="table-responsive">
+            <figure class="highcharts-figure">
+              <div id="container"></div>
+              <p class="highcharts-description">
+                  A basic column chart compares rainfall values between four cities.
+                  Tokyo has the overall highest amount of rainfall, followed by New York.
+                  The chart is making use of the axis crosshair feature, to highlight
+                  months as they are hovered over.
+              </p>
+            </figure>          
+          </div>
+        </main>
+      </div>
+    </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+
+  <script>
+    Highcharts.chart('container', {
+      chart: {
+          type: 'column'
+      },
+      title: {
+          text: 'Reporte de ventas'
+      },
+      subtitle: {
+          text: ''
+      },
+      xAxis: {
+        categories: [
+          'Alianza - Blanquiazul',
+          'Alianza Lima - Azul',
+          'Alianza Lima - Blanca',
+          'Bear',
+          'Black',
+          'Blue',
+          'Camo',
+          'Condor',
+          'Escudo',
+          'Forest',
+          'LightBlue',
+          'Pack 1',
+          'Pack 2',
+          'Pack 3',
+          'Tie Dye',
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Cantidad / Total S/.'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Cantidad',
+        data: [5572,
+4480,
+1701,
+568,
+1743,
+1228,
+121,
+78,
+882,
+652,
+767,
+3164,
+1221,
+535,
+797]
+
+    }, {
+        name: 'Total S/.',
+        data: [237443.2744,
+178838.8825,
+60482.3734,
+21428.0084,
+80232.8173,
+57597.1977,
+5096.81,
+3718.0232,
+31587.5235,
+22332.0251,
+30623.4815,
+220949.3393,
+76378.1861,
+32113.4571,
+26862.6496]
+
+    }]
+  });
+  </script>
+
+  </body>
+</html>
