@@ -24,7 +24,7 @@
         margin: 0;
       }
       .leaflet-container {
-        height: 400px;
+        height: 100vh;
         width: 100%;
         max-width: 100%;
         max-height: 100%;
@@ -110,7 +110,10 @@
   <script src="js/ordenes_delivered.js"></script>
   <script>
 
-    var markers = L.layerGroup()
+    var markers = L.layerGroup();
+
+    var lima = L.marker([-12.018339935795535, -77.08210032109963]).bindPopup('Lima').addTo(markers);
+
 
     var mbAttr = '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
     var mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
@@ -119,7 +122,7 @@
     var streets = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr})
     var overlays = {}
     var map = L.map('map', {
-      center: [39.73, -104.99],
+      center: [-12.002221182006943, -77.00519605326208],
       zoom: 10,
       layers: [grayscale, markers]
     })
@@ -131,18 +134,10 @@
       'Streets': streets
     }
 
-    const productos = [ordenes_confirmadas, ordenes_transito, ordenes_delivered]
+    var overlays = {
+      'Cities': cities
+    }
 
-    productos.map(element => {
-      var layerCities = L.layerGroup()
-      element.data.map(m => {
-        var mLittleton = L.marker([m.lat, m.lon]).bindPopup(`Se entregaron ${m.count} en ${m.PROVINCENAME} por un total ${m.total}`).addTo(layerCities)
-      })
-      
-      //overlays[`${element.name}`] = layerCities
-
-      layerControl.addOverlay(layerCities, m.name)
-    })
 
     layerControl = L.control.layers(baseLayers, overlays).addTo(map)
 

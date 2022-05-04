@@ -91,7 +91,28 @@
                   The chart is making use of the axis crosshair feature, to highlight
                   months as they are hovered over.
               </p>
-            </figure>          
+            </figure>  
+            
+            <figure class="highcharts-figure">
+              <div id="maximosyminimos"></div>
+              <p class="highcharts-description">
+                  A basic column chart compares rainfall values between four cities.
+                  Tokyo has the overall highest amount of rainfall, followed by New York.
+                  The chart is making use of the axis crosshair feature, to highlight
+                  months as they are hovered over.
+              </p>
+            </figure>  
+           
+            <figure class="highcharts-figure">
+              <div id="pruebahighcharts"></div>
+              <p class="highcharts-description">
+                  A basic column chart compares rainfall values between four cities.
+                  Tokyo has the overall highest amount of rainfall, followed by New York.
+                  The chart is making use of the axis crosshair feature, to highlight
+                  months as they are hovered over.
+              </p>
+            </figure>  
+
           </div>
         </main>
       </div>
@@ -100,7 +121,9 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+  <!-- Importando highcharts -->
   <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
 
   <script>
     Highcharts.chart('container', {
@@ -142,7 +165,7 @@
     tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
         footerFormat: '</table>',
         shared: true,
         useHTML: true
@@ -156,41 +179,200 @@
     series: [{
         name: 'Cantidad',
         data: [5572,
-4480,
-1701,
-568,
-1743,
-1228,
-121,
-78,
-882,
-652,
-767,
-3164,
-1221,
-535,
-797]
+          4480,
+          1701,
+          568,
+          1743,
+          1228,
+          121,
+          78,
+          882,
+          652,
+          767,
+          3164,
+          1221,
+          535,
+          797]
 
-    }, {
+      }, {
         name: 'Total S/.',
-        data: [237443.2744,
-178838.8825,
-60482.3734,
-21428.0084,
-80232.8173,
-57597.1977,
-5096.81,
-3718.0232,
-31587.5235,
-22332.0251,
-30623.4815,
-220949.3393,
-76378.1861,
-32113.4571,
-26862.6496]
-
+        data: [
+          237443.2744,
+          178838.8825,
+          60482.3734,
+          21428.0084,
+          80232.8173,
+          57597.1977,
+          5096.81,
+          3718.0232,
+          31587.5235,
+          22332.0251,
+          30623.4815,
+          220949.3393,
+          76378.1861,
+          32113.4571,
+          26862.6496
+        ]
     }]
   });
+  </script>
+
+  <script>
+    Highcharts.chart('maximosyminimos', {
+      chart: {
+          type: 'columnrange',
+          inverted: true,
+          min: -100
+      },
+
+      accessibility: {
+          description: ''
+      },
+
+      title: {
+          text: 'Pagos máximos y minimos por producto vendido'
+      },
+
+      subtitle: {
+          text: ''
+      },
+
+      xAxis: {
+          categories: [
+          'Alianza - Blanquiazul',
+          'Alianza Lima - Azul',
+          'Alianza Lima - Blanca',
+          'Bear',
+          'Black',
+          'Blue',
+          'Camo',
+          'Condor',
+          'Escudo',
+          'Forest',
+          'LightBlue',
+          'Pack 1',
+          'Pack 2',
+          'Pack 3',
+          'Tie Dye',
+        ]
+      },
+
+      yAxis: {
+          title: {
+              text: 'Total pagado ( S/. )'
+          }
+      },
+
+      tooltip: {
+          valueSuffix: '°C'
+      },
+
+      plotOptions: {
+          columnrange: {
+              dataLabels: {
+                  enabled: true,
+                  format: 'S/. {y}'
+              }
+          }
+      },
+
+      legend: {
+          enabled: false
+      },
+
+      series: [{
+          name: 'Total pagado',
+          data: [
+          [0,	756.7],
+          [-0.69,	672.5],
+          [-2.69,	672.5],
+          [18.3369,	840],
+          [0,	1420],
+          [0,	1420],
+          [20,	532],
+          [-20,	570],
+          [0,	570],
+          [-5,	640],
+          [-5,	880],
+          [-22.7667,	1229.5],
+          [32.8,	258.2],
+          [48.9,	254.5],
+          [-5,	600]
+        ]
+      }]
+
+      });
+        
+  </script>
+
+  <script>
+    Highcharts.chart('pruebahighcharts', {
+
+chart: {
+    type: 'columnrange',
+    inverted: true
+},
+
+accessibility: {
+    description: 'Image description: A column range chart compares the monthly temperature variations throughout 2017 in Vik I Sogn, Norway. The chart is interactive and displays the temperature range for each month when hovering over the data. The temperature is measured in degrees Celsius on the X-axis and the months are plotted on the Y-axis. The lowest temperature is recorded in March at minus 10.2 Celsius. The lowest range of temperatures is found in December ranging from a low of minus 9 to a high of 8.6 Celsius. The highest temperature is found in July at 26.2 Celsius. July also has the highest range of temperatures from 6 to 26.2 Celsius. The broadest range of temperatures is found in May ranging from a low of minus 0.6 to a high of 23.1 Celsius.'
+},
+
+title: {
+    text: 'Temperature variation by month'
+},
+
+subtitle: {
+    text: 'Observed in Vik i Sogn, Norway, 2017'
+},
+
+xAxis: {
+    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+},
+
+yAxis: {
+    title: {
+        text: 'Temperature ( °C )'
+    }
+},
+
+tooltip: {
+    valueSuffix: '°C'
+},
+
+plotOptions: {
+    columnrange: {
+        dataLabels: {
+            enabled: true,
+            format: '{y}°C'
+        }
+    }
+},
+
+legend: {
+    enabled: false
+},
+
+series: [{
+    name: 'Temperatures',
+    data: [
+        [-9.9, 10.3],
+        [-8.6, 8.5],
+        [-10.2, 11.8],
+        [-1.7, 12.2],
+        [-0.6, 23.1],
+        [3.7, 25.4],
+        [6.0, 26.2],
+        [6.7, 21.4],
+        [3.5, 19.5],
+        [-1.3, 16.0],
+        [-8.7, 9.4],
+        [-9.0, 8.6]
+    ]
+}]
+
+});
+
   </script>
 
   </body>
