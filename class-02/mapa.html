@@ -113,16 +113,12 @@
     var markers = L.layerGroup();
 
 
-    
+
     var lima = L.marker([-12.018339935795535, -77.08210032109963]).bindPopup('Lima').addTo(markers);
     var abancay = L.marker([-13.7322804, -72.8149939]).bindPopup('Abancay').addTo(markers);
     var arequipa = L.marker([-16.3988667, -71.5369607]).bindPopup('AREQUIPA').addTo(markers);
     var cajamarca = L.marker([-6.25, -78.833333]).bindPopup('Cajamarca').addTo(markers);
     var cusco = L.marker([-13.5170887, -71.9785356]).bindPopup('Cusco').addTo(markers);
-
-
-    
-
 
     var mbAttr = '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
     var mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
@@ -134,6 +130,17 @@
       center: [-12.002221182006943, -77.00519605326208],
       zoom: 10,
       layers: [grayscale, markers]
+    })
+
+    ordenes_delivered.data.map(item => {
+      if(item.PROVINCENAME != 'LIMA') {
+        var circle = L.circle([item.lat,item.lon], {
+          color: 'red',
+          fillColor: '#f03',
+          fillOpacity: 0.5,
+          radius: item.count
+        }).addTo(map)
+      }
     })
 
     var layerControl = L.control.layers(baseLayers, overlays).addTo(map)
